@@ -76,9 +76,12 @@ model.add(Dense(10, activation='softmax'))
 
 sgd = tf.keras.optimizers.SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer=sgd)
-history = model.fit(X_train, y_train, batch_size=32, epochs=100, verbose=2, validation_split=0.2)
+history = model.fit(X_train, y_train, batch_size=32, epochs=10, verbose=2, validation_split=0.2)
 score = model.evaluate(X_test, y_test, batch_size=32, verbose=0)
 model.summary()
+
+# Save the model if needed
+# model.save("question_1_model")
 
 print(model.metrics_names)
 print(score)
